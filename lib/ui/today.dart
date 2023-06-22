@@ -1,4 +1,5 @@
 import 'package:block/themes/theme.dart';
+import 'package:block/ui/eventWidget.dart';
 import 'package:block/ui/procesing_work_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +56,15 @@ class _TodayWidgetState extends State<TodayWidget> {
       decoration: BoxDecoration(
           color: lightColorScheme.primary,
           shape: BoxShape.circle,),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 40,),
+          Center(child: Text('Hoy', style:TextStyle(fontSize: 60, color: lightColorScheme.secondaryContainer, fontFamily: "Garamond") ,)),
+          SizedBox(height: 30,),
+          EventWidget(),
+        ],
+      ),
     );
   }
 }
