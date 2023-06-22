@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:block/themes/theme.dart';
 
+import 'info.dart';
+
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
 
@@ -19,6 +21,36 @@ class _CalendarPageState extends State<CalendarPage> {
         title: Center(child: Text('TaskMe')),
         backgroundColor: lightColorScheme.primary,
           foregroundColor: lightColorScheme.onPrimary,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Menú'),
+              decoration: BoxDecoration(
+                color: lightColorScheme.primary,
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('Info'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Info()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Configuración'),
+              onTap: () {
+                // Acción al pulsar el elemento del menú
+              },
+            ),
+          ],
+        ),
       ),
       body: SfCalendar(
         view: CalendarView.month,
