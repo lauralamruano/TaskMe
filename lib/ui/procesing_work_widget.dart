@@ -20,10 +20,6 @@ List<ElevatedButton> buttons = [
   ),
   ElevatedButton(
     onPressed: () {},
-    child: Text('Procesando'),
-  ),
-  ElevatedButton(
-    onPressed: () {},
     child: Text('Finalizadas'),
   ),
 ];
