@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  final List<Widget> pages = [Today(), CalendaryPage()];
+  final List<Widget> pages = [Today(), CalendarPage()];
 
   @override
   Widget build(BuildContext context) {
