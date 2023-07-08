@@ -38,7 +38,7 @@ class _WriteTaskState extends State<WriteTask> {
             ),
             child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
+                child: const TextField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: 'Escriba su nueva tarea:'),
                 )),

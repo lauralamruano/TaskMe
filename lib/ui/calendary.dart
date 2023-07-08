@@ -1,12 +1,11 @@
-import 'package:block/providers/color_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
+import 'package:block/providers/color_provider.dart';
+import 'package:block/ui/drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:block/themes/theme.dart';
 
-import 'info.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -27,34 +26,7 @@ class _CalendarPageState extends State<CalendarPage> {
         foregroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.onPrimary),
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Menú'),
-              decoration: BoxDecoration(
-                color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text('Info'),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Info()),
-                );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Configuración'),
-              onTap: () {
-                // Acción al pulsar el elemento del menú
-              },
-            ),
-          ],
-        ),
+        child: MyDrawer()
       ),
       body: SfCalendar(
         view: CalendarView.month,

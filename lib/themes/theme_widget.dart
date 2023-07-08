@@ -28,7 +28,7 @@ class _ChangeColorState extends State<ChangeColor> {
       body: Center(
         child: Column(
           children: [
-            Text('Selecciona un color:'),
+            Text('Selecciona un color:', style: TextStyle(fontSize: 24),),
             SizedBox(height: 40),
             IconButton(
               onPressed: () {
