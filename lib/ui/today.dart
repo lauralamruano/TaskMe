@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:block/providers/color_provider.dart';
 import 'package:block/themes/theme_widget.dart';
 import 'package:block/ui/add_task.dart';
-import 'package:block/ui/eventWidget.dart';
 import 'package:block/ui/info.dart';
 import 'package:block/ui/procesing_work_widget.dart';
 import 'package:provider/provider.dart';
@@ -25,9 +24,7 @@ class _TodayState extends State<Today> {
           backgroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
           foregroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.onPrimary),
           title: Text('TaskMe'),
-          centerTitle: true,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
-        ),
+          centerTitle: true,),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
