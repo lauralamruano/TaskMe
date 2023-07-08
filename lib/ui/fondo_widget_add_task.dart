@@ -22,7 +22,6 @@ class Fondo extends StatelessWidget {
           child: const Column(
             children: [
               SizedBox(
-                height: 50.0,
                 width: double.infinity,
               ),
               Text(

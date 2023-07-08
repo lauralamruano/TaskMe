@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
-import '../providers/color_provider.dart';
-
 
 class WriteTask extends StatefulWidget {
   const WriteTask(BuildContext context, {super.key});
@@ -25,7 +22,7 @@ class _WriteTaskState extends State<WriteTask> {
           ),
           Container(
             width: size.width * 0.85,
-            padding: const EdgeInsets.symmetric(vertical: 150),
+            padding: const EdgeInsets.symmetric(vertical: 50),
             margin: const EdgeInsets.symmetric(vertical: 30),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -39,17 +36,12 @@ class _WriteTaskState extends State<WriteTask> {
                 ),
               ],
             ),
-            child: Column(
-              children:
-              [
-                Text(
-                  'Crear cuenta',
-                  style: TextStyle(
-                    fontSize: 20, color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.inversePrimary),),
-                ),
-                task()
-              ],
-            ),
+            child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextField(
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(labelText: 'Escriba su nueva tarea:'),
+                )),
           ),
         ],
       ),
@@ -57,11 +49,3 @@ class _WriteTaskState extends State<WriteTask> {
   }
 }
 
-Widget task() {
-  return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: TextField(
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(labelText: 'Escriba su nueva tarea:'),
-      ));
-}
