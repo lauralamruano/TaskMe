@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:block/themes/theme.dart';
 import 'package:block/ui/today.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/color_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: lightColorScheme.primary,
+          backgroundColor: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
           selectedItemColor: lightColorScheme.onPrimary,
           unselectedItemColor: lightColorScheme.onPrimary,
           currentIndex: _selectedIndex,

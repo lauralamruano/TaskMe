@@ -1,6 +1,8 @@
+import 'package:block/providers/color_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:block/themes/theme.dart';
 
@@ -14,13 +16,15 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  late ThemeData selectedTheme = Provider.of<ColorProvider>(context, listen: false).selectedTheme;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('TaskMe')),
-        backgroundColor: lightColorScheme.primary,
-          foregroundColor: lightColorScheme.onPrimary,
+        title: Text('TaskMe'),
+        centerTitle: true,
+        backgroundColor: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
+        foregroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.onPrimary),
       ),
       drawer: Drawer(
         child: ListView(
@@ -29,7 +33,7 @@ class _CalendarPageState extends State<CalendarPage> {
             DrawerHeader(
               child: Text('Menú'),
               decoration: BoxDecoration(
-                color: lightColorScheme.primary,
+                color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
               ),
             ),
             ListTile(
@@ -64,14 +68,14 @@ List<Appointment> getAppointments() {
   List<Appointment> meetings = <Appointment>[];
   final DateTime today = DateTime.now();
   final DateTime startTime =
-  DateTime(today.year, today.month, today.day, 9, 0, 0);
-  final DateTime endTime = startTime.add(const Duration(hours: 2));
+  DateTime(today.year, today.month, today.day, 9, 0, 0); //que empiece a la hora actual
+  final DateTime endTime = startTime.add(const Duration(hours: 2)); //que termine cuando se cierre una variable por ejemplo
   meetings.add(
     Appointment(
       startTime: startTime,
       endTime: endTime,
       subject: 'Meeting',
-      color: Colors.blue,
+      color: lightColorScheme.primary,
       isAllDay: false,
     ),
   );

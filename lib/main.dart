@@ -1,12 +1,20 @@
+import 'package:block/providers/color_provider.dart';
+import 'package:block/themes/theme_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:block/ui/home_page.dart';
-import 'package:block/themes/theme.dart';
+import 'package:provider/provider.dart';
 
 
 void main() {
-  runApp(App());
+  runApp(
+    ChangeNotifierProvider<ColorProvider>(
+      create: (context) => ColorProvider(),
+      child: App(),
+    ),
+  );
 }
+
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -20,8 +28,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      theme: Provider.of<ColorProvider>(context).selectedTheme,
+      darkTheme: Provider.of<ColorProvider>(context).selectedTheme,
       home: HomePage(),
     );
   }

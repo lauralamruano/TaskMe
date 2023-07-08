@@ -2,19 +2,35 @@ import 'package:block/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
-  const Info({Key? key}) : super(key: key);
+  const Info({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      color: lightColorScheme.primary,
-      child: Column(
-        children: [
-          SizedBox(height: 60,),
-          Text('Creado por Laura Lam', style: TextStyle(color: lightColorScheme.onPrimary, fontSize: 20),),
-          SizedBox(height: 60,),
-          Text('Version 1.0', style: TextStyle(color: lightColorScheme.onPrimary, fontSize: 20),)
-        ],
+    return Scaffold(
+      backgroundColor: lightColorScheme.primary,
+      appBar: AppBar(
+        backgroundColor: lightColorScheme.primary,
+        foregroundColor: lightColorScheme.onPrimary,
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            SizedBox(height: 0),
+            Text(
+              'Creado por Laura',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 40),
+            Text(
+              'Versión 1.0',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

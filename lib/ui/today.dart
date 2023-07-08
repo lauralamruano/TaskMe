@@ -1,8 +1,13 @@
-import 'package:block/themes/theme.dart';
+import 'package:block/ui/today_widget.dart';
+import 'package:flutter/material.dart';
+
+import 'package:block/providers/color_provider.dart';
+import 'package:block/themes/theme_widget.dart';
+import 'package:block/ui/add_task.dart';
 import 'package:block/ui/eventWidget.dart';
 import 'package:block/ui/info.dart';
 import 'package:block/ui/procesing_work_widget.dart';
-import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Today extends StatefulWidget {
   const Today({Key? key}) : super(key: key);
@@ -12,13 +17,15 @@ class Today extends StatefulWidget {
 }
 
 class _TodayState extends State<Today> {
+  late ThemeData selectedTheme = Provider.of<ColorProvider>(context, listen: false).selectedTheme;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: lightColorScheme.primary,
-          foregroundColor: lightColorScheme.onPrimary,
-          title: Center(child: Text('TaskMe')),
+          backgroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
+          foregroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.onPrimary),
+          title: Text('TaskMe'),
+          centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
         ),
         drawer: Drawer(
@@ -26,9 +33,9 @@ class _TodayState extends State<Today> {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text('Menú'),
+                child: Text(''),
                 decoration: BoxDecoration(
-                  color: lightColorScheme.primary,
+                  color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
                 ),
               ),
               ListTile(
@@ -59,7 +66,10 @@ class _TodayState extends State<Today> {
                 leading: Icon(Icons.palette_outlined),
                 title: Text('Temas'),
                 onTap: () {
-                  // Acción al pulsar el elemento del menú
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangeColor()),
+                  );
                 },
               ),
               ListTile(
@@ -91,50 +101,13 @@ class _TodayState extends State<Today> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddTask()),
+            );
+          },
           child: Icon(Icons.add),
         ));
-  }
-}
-
-class TodayWidget extends StatefulWidget {
-  const TodayWidget({Key? key}) : super(key: key);
-
-  @override
-  State<TodayWidget> createState() => _TodayWidgetState();
-}
-
-class _TodayWidgetState extends State<TodayWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 80, horizontal: 12),
-      width: 300,
-      height: 400,
-      decoration: BoxDecoration(
-        color: lightColorScheme.primary,
-        shape: BoxShape.circle,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 40,
-          ),
-          Center(
-              child: Text(
-            'Hoy',
-            style: TextStyle(
-                fontSize: 60,
-                color: lightColorScheme.secondaryContainer,
-                fontFamily: 'Garamond'),
-          )),
-          SizedBox(
-            height: 30,
-          ),
-          EventWidget(),
-        ],
-      ),
-    );
   }
 }
