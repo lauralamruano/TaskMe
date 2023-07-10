@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/color_provider.dart';
 import '../themes/theme_widget.dart';
 import 'info.dart';
 
@@ -17,7 +15,7 @@ class MyDrawer extends StatelessWidget {
           DrawerHeader(
             child: Text(''),
             decoration: BoxDecoration(
-              color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
+              color:Theme.of(context).colorScheme.primary,
             ),
           ),
           ListTile(
