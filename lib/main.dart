@@ -28,8 +28,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: Provider.of<ColorProvider>(context).selectedTheme,
-      darkTheme: Provider.of<ColorProvider>(context).selectedTheme,
+      theme: Provider.of<ColorProvider>(context).selectedTheme.theme,
+      darkTheme: Provider.of<ColorProvider>(context).selectedTheme.darkTheme,
       home: HomePage(),
     );
   }

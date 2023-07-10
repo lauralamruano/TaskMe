@@ -15,15 +15,14 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
-  late ThemeData selectedTheme = Provider.of<ColorProvider>(context, listen: false).selectedTheme;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('TaskMe'),
         centerTitle: true,
-        backgroundColor: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
-        foregroundColor:context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.onPrimary),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor:Theme.of(context).colorScheme.onPrimary,
       ),
       drawer: Drawer(
         child: MyDrawer()

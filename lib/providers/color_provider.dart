@@ -5,19 +5,18 @@ import 'package:provider/provider.dart';
 import '../models/color_theme_model.dart';
 
 class ColorProvider with ChangeNotifier {
-  final String _key = "theme";
-  late ThemeData _selectedTheme;
+  late ColorTheme _selectedTheme;
 
   ColorProvider() {
     // Recuperar el tema guardado previamente de SharedPreferences o utilizar el tema predeterminado
     // Aquí es donde puedes usar SharedPreferences para guardar y recuperar el tema seleccionado si quieres persistencia en el tema elegido.
     // En este ejemplo se utiliza el tema predeterminado.
-    _selectedTheme = themes[0].theme;
+    _selectedTheme = themes[0];
   }
 
-  ThemeData get selectedTheme => _selectedTheme;
+  ColorTheme get selectedTheme => _selectedTheme;
 
-  void setTheme(ThemeData theme) {
+  void setTheme(ColorTheme theme) {
     _selectedTheme = theme;
     notifyListeners();
   }

@@ -12,7 +12,7 @@ class ChangeColor extends StatefulWidget {
 }
 
 class _ChangeColorState extends State<ChangeColor> {
-  late ThemeData selectedTheme;
+  late ColorTheme selectedTheme;
 
   @override
   void initState() {
@@ -28,13 +28,14 @@ class _ChangeColorState extends State<ChangeColor> {
       body: Center(
         child: Column(
           children: [
-            Text('Selecciona un color:', style: TextStyle(fontSize: 24),),
+            Text('Selecciona un color:', style: TextStyle(fontSize: 24, color: Theme.of(context).colorScheme.primary,),),
             SizedBox(height: 40),
             IconButton(
               onPressed: () {
                 setState(() {
-                  colorProvider.setTheme(themes[1].theme);
+                  colorProvider.setTheme(themes[1]);
                 });
+                Navigator.pop(context);
               },
               icon: Icon(Icons.color_lens, size: 80),
               color: Colors.blue,
@@ -43,8 +44,9 @@ class _ChangeColorState extends State<ChangeColor> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  colorProvider.setTheme(themes[2].theme);
+                  colorProvider.setTheme(themes[2]);
                 });
+                Navigator.pop(context);
               },
               icon: Icon(Icons.color_lens, size: 80),
               color: Colors.orange,
@@ -53,8 +55,9 @@ class _ChangeColorState extends State<ChangeColor> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  colorProvider.setTheme(themes[3].theme);
+                  colorProvider.setTheme(themes[3]);
                 });
+                Navigator.pop(context);
               },
               icon: Icon(Icons.color_lens, size: 80),
               color: Colors.red,
@@ -63,8 +66,9 @@ class _ChangeColorState extends State<ChangeColor> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  colorProvider.setTheme(themes[0].theme);
+                  colorProvider.setTheme(themes[0]);
                 });
+                Navigator.pop(context);
               },
               icon: Icon(Icons.color_lens, size: 80,),
               color: Colors.pink,

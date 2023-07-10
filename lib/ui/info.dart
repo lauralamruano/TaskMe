@@ -9,8 +9,8 @@ class Info extends StatelessWidget {
     return Scaffold(
       backgroundColor: lightColorScheme.primary,
       appBar: AppBar(
-        backgroundColor: lightColorScheme.primary,
-        foregroundColor: lightColorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: const Center(
         child: Column(

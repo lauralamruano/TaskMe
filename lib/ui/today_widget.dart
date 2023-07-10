@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/color_provider.dart';
-import 'eventWidget.dart';
 
 class TodayWidget extends StatefulWidget {
   const TodayWidget({Key? key}) : super(key: key);
@@ -19,7 +16,7 @@ class _TodayWidgetState extends State<TodayWidget> {
       width: 300,
       height: 400,
       decoration: BoxDecoration(
-        color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
+        color: Theme.of(context).colorScheme.primary,
         shape: BoxShape.circle,
       ),
       child: Column(
@@ -33,13 +30,12 @@ class _TodayWidgetState extends State<TodayWidget> {
                 'Hoy',
                 style: TextStyle(
                     fontSize: 60,
-                    color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.secondaryContainer),
+                    color: Theme.of(context).colorScheme.secondaryContainer,
                     fontFamily: 'Garamond'),
               )),
           SizedBox(
             height: 30,
           ),
-          EventWidget(),
         ],
       ),
     );
