@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/color_provider.dart';
 
 class Fondo extends StatelessWidget {
   const Fondo(BuildContext context, {super.key});
@@ -12,7 +10,7 @@ class Fondo extends StatelessWidget {
 
     final fondoColor = Container(
       width: double.infinity,
-      color: context.select<ColorProvider, Color?>((colorProvider) => colorProvider.selectedTheme.colorScheme.primary),
+      color: Theme.of(context).colorScheme.primary,
     );
     return Stack(
       children: [
